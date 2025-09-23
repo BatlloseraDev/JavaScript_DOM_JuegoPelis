@@ -5,21 +5,11 @@
 const NMOVIES = 5
 const NELEMENTSPMOVIE = 3
 
-/* Voy a crear un elemento */
 
-// const btnNuevaPartida = () =>{
-//     let imagenPeli =  getElement(movieDeck)
-//     let contenedor = document.getElementById('pelicula-caratula')
-//     const imgElement = document.createElement('img')
-//     imgElement.classList.add('elemento')
-//     imgElement.src = `assets/movies/${imagenPeli}.jpg`
-//     if(contenedor.firstChild) contenedor.removeChild(contenedor.firstChild)
-//     contenedor.appendChild(imgElement)
-// }
+//Mostrar peliculas
+let btnMostrarPelicula = document.getElementById('Mostrar_Película')
 
-let btnNuevaPartida = document.getElementById('Mostrar_Película')
-
-btnNuevaPartida.addEventListener('click', (event)=> {
+btnMostrarPelicula.addEventListener('click', (event)=> {
     let imagenPeli= getElement(movieDeck)
     let contenedor = document.getElementById('pelicula-caratula')
 
@@ -28,11 +18,39 @@ btnNuevaPartida.addEventListener('click', (event)=> {
     imgElement.src = `assets/movies/${imagenPeli}.jpg`
     imgElement.alt = 'caratula Peli'
 
-    
+
     contenedor.innerHTML= ''
     contenedor.appendChild(imgElement)
     event.stopPropagation();
+
+    resetRecursos()
+
+
 })
+
+//Mostrar recursos
+
+let btnMostrarRecursos = document.getElementById('Mostrar_Recursos')
+
+btnMostrarRecursos.addEventListener('click', (event)=> {
+
+    console.log('accionado');
+    let imagenRecurso= getElement(elementDeck)
+    let contenedor = document.getElementById('elementos-pelicula')
+    let newContenedor = document.createElement('div')
+    newContenedor.classList.add('elemento')
+
+    const imgElement = document.createElement('img')
+    imgElement.classList.add('recurso')
+    imgElement.src = `assets/characters/${imagenRecurso}.jpg`
+    imgElement.alt = 'caratula Recurso'
+
+    newContenedor.appendChild(imgElement)
+    contenedor.appendChild(newContenedor)
+    event.stopPropagation();
+
+})
+
 
 
 // document.getElementbyId('Nuevo_juego').addEventListener('click', (event)=>{
@@ -57,7 +75,7 @@ const getMoviesDeck = () => {
 const getElementsDeck = () => {
     let elementDeck = []
     for(let i = 1; i <= NMOVIES; i++) {
-        for(let j = 1; j <= NELEMENTSPMOVIE; j++) {
+        for(let j = 0; j < NELEMENTSPMOVIE; j++) {
             elementDeck.push("0"+i+"C"+j)
         } 
     }
@@ -68,6 +86,20 @@ const getElementsDeck = () => {
 
 let movieDeck = getMoviesDeck()
 let elementDeck = getElementsDeck()
+
+
+const resetRecursos = () => {
+    elementDeck = getElementsDeck()
+    let contenedor = document.getElementById('elementos-pelicula')
+    contenedor.innerHTML = ''
+
+}
+
+const resetPeliculas = () => {
+    movieDeck = getMoviesDeck()
+}
+
+
 
 
 
