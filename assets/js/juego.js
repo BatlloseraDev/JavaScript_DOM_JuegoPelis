@@ -7,14 +7,30 @@ const NELEMENTSPMOVIE = 3
 
 /* Voy a crear un elemento */
 
-const btnNuevaPartida = () =>{
-    let imagenPeli =  getElement(movieDeck)
+// const btnNuevaPartida = () =>{
+//     let imagenPeli =  getElement(movieDeck)
+//     let contenedor = document.getElementById('pelicula-caratula')
+//     const imgElement = document.createElement('img')
+//     imgElement.classList.add('elemento')
+//     imgElement.src = `assets/movies/${imagenPeli}.jpg`
+//     if(contenedor.firstChild) contenedor.removeChild(contenedor.firstChild)
+//     contenedor.appendChild(imgElement)
+// }
+
+let btnNuevaPartida = document.getElementById('Mostrar_Película')
+
+btnNuevaPartida.addEventListener('click', (event)=> {
+    let imagenPeli= getElement(movieDeck)
     let contenedor = document.getElementById('pelicula-caratula')
+
     const imgElement = document.createElement('img')
+    imgElement.classList.add('elemento')
     imgElement.src = `assets/movies/${imagenPeli}.jpg`
-    imgElement.classList.add('element')
+    imgElement.alt = 'caratula Peli'
+    contenedor.innerHTML= ''
     contenedor.appendChild(imgElement)
-}
+})
+
 
 // document.getElementbyId('Nuevo_juego').addEventListener('click', (event)=>{
     
