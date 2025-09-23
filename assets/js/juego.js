@@ -27,8 +27,11 @@ btnNuevaPartida.addEventListener('click', (event)=> {
     imgElement.classList.add('elemento')
     imgElement.src = `assets/movies/${imagenPeli}.jpg`
     imgElement.alt = 'caratula Peli'
+
+    
     contenedor.innerHTML= ''
     contenedor.appendChild(imgElement)
+    event.stopPropagation();
 })
 
 
