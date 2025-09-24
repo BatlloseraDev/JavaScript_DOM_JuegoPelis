@@ -42,3 +42,11 @@ html, body {
 #elementos-pelicula, #pelicula-caratula {
     height: 320px;
 }
+
+.ok {
+    border-color: green;
+}
+
+.fail {
+    border-color: red;
+}

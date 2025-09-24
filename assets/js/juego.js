@@ -5,7 +5,6 @@
 const NMOVIES = 5
 const NELEMENTSPMOVIE = 3
 
-
 //Mostrar peliculas
 let btnMostrarPelicula = document.getElementById('Mostrar_Película')
 
@@ -34,7 +33,7 @@ let btnMostrarRecursos = document.getElementById('Mostrar_Recursos')
 
 btnMostrarRecursos.addEventListener('click', (event)=> {
 
-    console.log('accionado');
+   
     let imagenRecurso= getElement(elementDeck)
     let contenedor = document.getElementById('elementos-pelicula')
     let newContenedor = document.createElement('div')
@@ -46,12 +45,41 @@ btnMostrarRecursos.addEventListener('click', (event)=> {
     imgElement.alt = 'caratula Recurso'
 
     newContenedor.appendChild(imgElement)
+    newContenedor.addEventListener('mouseup', seleccionarEventListener)
     contenedor.appendChild(newContenedor)
     event.stopPropagation();
 
 })
 
 
+
+
+const seleccionarEventListener = (e)=>{
+    
+    let img = (e.target.tagName== 'DIV') ? e.target.firstElementChild : e.target
+    let numeroRecurso = img.src.split('/').pop()
+    if(comprobarPertenece(numeroRecurso)) {
+        
+        img.parentElement.classList.add('ok');
+    }
+    else{
+        img.parentElement.classList.add('fail');
+    }
+
+    
+    // let img= (e.target.tagName === 'DIV') ? e.target.querySelector('img') : e.target
+    // let numeroPeli = img.src.split('/').pop()
+    // if(comprobarPertenece(numeroPeli)) 
+
+}
+
+
+const comprobarPertenece = (numeroRecurso)=>{
+    let numRecurso = numeroRecurso.split('C')[0]
+    //let numPeli = document.getElementById('pelicula-caratula').querySelector('img').src.split('/').pop().split('M').firstElementChild
+    let numPeli = document.getElementById('pelicula-caratula').querySelector('img').src.split('/').pop().split('M')[0]
+    return numRecurso== numPeli;
+}
 
 // document.getElementbyId('Nuevo_juego').addEventListener('click', (event)=>{
     
