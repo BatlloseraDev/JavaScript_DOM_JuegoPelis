@@ -35,6 +35,24 @@ html, body {
     border-style: solid;
 }
 
+.elementoVacio{
+    position: relative;
+    background-color: rgb(81, 100, 119);
+    width: 210px;
+    height: 310px;
+    left: 100px;
+    margin-left: 20px;
+    float:left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-color: azure;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style: solid;
+}
+
+
 .recurso {
     width: 200px;
 }
@@ -45,8 +63,25 @@ html, body {
 
 .ok {
     border-color: green;
+    background-color: black;
 }
 
 .fail {
     border-color: red;
 }
+
+#contenedor-horizontal{
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 0;
+    padding: 0;
+}
+#pelicula-caratula {
+    width: auto;
+}
+
+.dragging{
+    opacity: 0.5;
+}
+
