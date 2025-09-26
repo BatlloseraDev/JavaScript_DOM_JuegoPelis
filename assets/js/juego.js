@@ -58,6 +58,7 @@ btnMostrarRecursos.addEventListener('click', (event) => {
     imgElement.classList.add('recurso')
     imgElement.src = `assets/characters/${imagenRecurso}.jpg`
     imgElement.alt = 'caratula Recurso'
+    imgElement.draggable = false;
 
 
 
