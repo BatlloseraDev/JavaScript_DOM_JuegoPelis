@@ -5,8 +5,11 @@
 const NMOVIES = 5
 const NELEMENTSPMOVIE = 3
 let draggedElement = null;
+let intentosRestantes = 5;
 
 const dropTargets = document.querySelectorAll('#pelicula-intento .elementoVacio');
+const intentosElemento = document.getElementById('intentos')
+
 
 
 
@@ -65,6 +68,9 @@ btnMostrarRecursos.addEventListener('click', (event) => {
     newContenedor.appendChild(imgElement)
     //newContenedor.addEventListener('mouseup', seleccionarEventListener) cambia con el tema de dragg
     newContenedor.addEventListener('dragstart', (e) => {
+        if(intentosRestantes==0){
+            return; 
+        }
         newContenedor.classList.add('dragging');
         draggedElement = newContenedor;
         e.dataTransfer.effectAllowed = "move";
@@ -100,7 +106,7 @@ const controlarDrop = (e) => {
     const pertenece = comprobarPertenece(numeroRecurso);
 
     if (pertenece===null || dropObjetivo.tagName!=='DIV' || dropObjetivo.classList.contains('ok')) return;// si no hay elemento o si ya esta lleno que se salga
-    console.log(dropObjetivo);
+    //console.log(dropObjetivo);
 
     if (pertenece) {
         //dropObjetivo.src = imgRecurso.src;
@@ -117,16 +123,28 @@ const controlarDrop = (e) => {
     }
     else{ // en caso de fallo 
         draggedElement.classList.add('fail');
+        intentosRestantes--;
+        console.log(intentosRestantes);
+        actualizarIntentos();
+
 
     }
+}
 
-
-
+const actualizarIntentos = () => {
+    if (intentosRestantes > 0){
+        intentosElemento.innerHTML = `Intentos restantes: ${intentosRestantes}`;
+    }
+    else{
+        intentosElemento.innerHTML= `Has perdido, para poder seguir jugando dale a nuevo juego :D`
+    } ;
 }
 
 
 const btnNuevoJuego = document.getElementById('Nuevo_Juego')
 btnNuevoJuego.addEventListener('click', (e) => {
+    intentosRestantes = 5;
+    actualizarIntentos();
     resetDropTargets();
     resetCaratula();
     resetPeliculas();

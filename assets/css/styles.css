@@ -85,3 +85,13 @@ html, body {
     opacity: 0.5;
 }
 
+.intentos{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 15px;
+    font-size: x-large;
+    color: orangered;
+    font-weight: bolder;
+}
+
